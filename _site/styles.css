@@ -1,0 +1,42 @@
+/* Lume's design system */
+@import "https://unpkg.com/@lumeland/ds@0.5.2/ds.css";
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: start;
+  row-gap: 2em;
+  column-gap: 4em;
+  grid-template-columns: minmax(0, 800px);
+  grid-template-areas: "toolbar"
+                        "main"
+                        "menu"
+                        "footer";
+
+  @media (max-width: 949px) {
+    padding: 5vw;
+  }
+  @media (min-width: 950px) {
+    grid-template-columns: clamp(250px, 25vw, 300px) minmax(0, 800px) 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "menu toolbar"
+                         "menu main"
+                         "menu footer";
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr minmax(10vw, 250px) minmax(0, 800px) 200px 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas: "menu menu toolbar ."
+                         "menu menu main toc"
+                         "menu menu footer toc";
+  }
+}
+
+main {
+  grid-area: main;
+  color:darkslategray;
+}
+.body {
+  margin-top: var(--row-gap-xsmall);
+}
